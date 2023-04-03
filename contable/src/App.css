@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../public/fonts/Montserrat-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Montserrat-Medium';
+  
+}
+
 .container {
   width: 100%;
   

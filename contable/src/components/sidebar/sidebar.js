@@ -11,14 +11,14 @@ const Sidebar = () => {
         <li className={styles.title}>Registros</li>
         <li>
           <ul>
-            <li><a href="#">Ingresos</a></li>
-            <li><a href="#">Egresos</a></li>
-            <li><a href="#">Ventas</a></li>
-            <li><a href="#">Compras</a></li>
-            <li><a href="#">Ajustes</a></li>
-            <li><a href="#">N Credito</a></li>
-            <li><a href="#">N Debito</a></li>
-            <li><a href="#">A-B-M Cuentas</a></li>
+            <li><a href="/ingresos">Ingresos</a></li>
+            <li><a href="/egresos">Egresos</a></li>
+            <li><a href="/ventas">Ventas</a></li>
+            <li><a href="/compras">Compras</a></li>
+            <li><a href="/ajustes">Ajustes</a></li>
+            <li><a href="/ncredito">N Credito</a></li>
+            <li><a href="/ndebito">N Debito</a></li>
+            <li><a href="/abmcuentas">A-B-M Cuentas</a></li>
 
           </ul>
         </li>
