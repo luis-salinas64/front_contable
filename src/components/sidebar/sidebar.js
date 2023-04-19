@@ -8,7 +8,7 @@ const Sidebar = () => {
         <span>Menu</span>
       </div>
       <ul>
-        <li className={styles.title}>Registros</li>
+        <li className={styles.title}><a href="/registros">Registros</a></li>
         <li>
           <ul>
             <li><a href="/ingresos">Ingresos</a></li>

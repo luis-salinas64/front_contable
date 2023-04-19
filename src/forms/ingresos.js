@@ -8,12 +8,14 @@ import Button from '@mui/material/Button';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import Select from '@mui/material/Select'; // importar Select de MUI
-import MenuItem from '@mui/material/MenuItem'; // importar MenuItem de MUI
+
+
+
+
 
 
 const MyContainer = styled(Container)({
-  backgroundColor: '#C4E0E5',
+  // backgroundColor: '#C4E0E5',
   position: 'absolute',
   // height: '720px',
   top: '101px',
@@ -35,36 +37,62 @@ const MyForm = styled('form')({
 const MyRow = styled('div')({
   display: 'flex',
   flexDirection: 'row',
-  justifyContent: 'center',
+  // justifyContent: 'center',
 });
 
 const MyField = styled(TextField)({
-  width:"500px",
+  width: "500px",
   margin: '12px',
+  marginLeft: '12px',
+  borderRadius: '4px',
+
   '& .MuiInputBase-input': {
-    padding: '10px',
-    backgroundColor: '#FFFFFF',
-    color: 'black'
+    padding: '5px',
+    backgroundColor: 'whitesmoke',
+
+  },
+});
+
+const MyFieldCpte = styled(TextField)({
+  width: "170px",
+  margin: '12px',
+  marginLeft: '380px',
+  borderRadius: '4px',
+
+
+  '& .MuiInputBase-input': {
+    padding: '5px',
+    backgroundColor: 'whitesmoke',
+
   },
 });
 
 const MyButtonRow = styled(MyRow)({
-  marginTop: '32px',
+  marginTop: '15px',
+  marginBottom: '20px',
   justifyContent: 'center',
+
 });
 
 const MySubmitButton = styled(Button)({
   marginRight: '16px',
+  textDecoration: 'none',
 });
+
+const MyCancelButton = styled(Button)({
+  background: 'red',
+  textDecoration: 'none',
+});
+
 const MyDatePicker = styled(DatePicker)({
   margin: '12px',
   '& .MuiInputBase-input': {
-    padding: '10px',
+    padding: '5px',
     backgroundColor: '#FFFFFF',
     fontSize: '16px',
-    width: '200px',
+    width: '180px',
     borderRadius: '4px',
-    border: '1px solid #ced4da',
+    // border: '1px solid #ced4da',
     boxShadow: '0 0 5px 1px rgba(0, 0, 0, 0.1)',
 
   },
@@ -72,10 +100,18 @@ const MyDatePicker = styled(DatePicker)({
 
 const MySubtitle = styled(Typography)({
   marginLeft: '12px',
+  marginBottom: '20px',
   borderBottom: '1px solid black',
-  paddingBottom: '8px',
+  paddingBottom: '10px',
   fontWeight: 'bold',
 });
+
+const MyCrearButton = styled(Button)({
+  height: '28px',
+  margin: '14px',
+  marginLeft: '50px'
+})
+
 
 const Ingresos = () => {
   const [numComprobante, setNumComprobante] = useState(1);
@@ -96,9 +132,15 @@ const Ingresos = () => {
 
   const handleImporteChange = (e) => {
     const value = e.target.value;
-    const formattedValue = parseFloat(value).toFixed(2);
-    setImporte(formattedValue);
+    const formattedValue = parseFloat(value);
+    const hasTwoDecimals = /^\d+(\.\d{1,2})?$/.test(value);
+    if (!hasTwoDecimals) {
+      setImporte(formattedValue.toFixed(2));
+    } else {
+      setImporte(formattedValue.toString());
+    }
   };
+
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -116,18 +158,17 @@ const Ingresos = () => {
                 renderInput={(params) => <MyField {...params} size="small" />}
               />
             </LocalizationProvider>
-            <MyField size="medium" label="Número de comprobante" value={numComprobante} style={{ marginLeft: '80px' }}
+            <MyFieldCpte size="medium" label="Número de comprobante" value={numComprobante} style={{ marginLeft: '80px' }}
               disabled={true}
             />
 
 
           </MyRow>
           <MySubtitle variant="h5">Detalle del Ingreso</MySubtitle>
-          {/* <MyField size="small" label="Categoría cuenta" style={{marginLeft: '0px'}} /> */}
+          
           <MyField
             size="small"
-            label="Categoría cuenta"
-            style={{ marginLeft: '0px' }}
+            label="Categoría cuenta"            
             value={categoriaCuenta}
             onChange={(e) => setCategoriaCuenta(e.target.value)}
             required
@@ -140,39 +181,88 @@ const Ingresos = () => {
             <option value="opcion2">Opción 2</option>
             <option value="opcion3">Opción 3</option>
           </MyField>
-          {/* <MyField size="small" label="Cuenta" style={{ marginLeft: '0px' }} /> */}
+
+          <MyRow>
+            <MyField
+              size="small"
+              label="Cuenta"
+              value={cuenta}
+              onChange={(e) => setCuenta(e.target.value)}
+              required
+              select
+              SelectProps={{ native: true }}
+              InputLabelProps={{ shrink: true }}
+            >
+              <option value="" disabled>Seleccione una cuenta</option>
+              <option value="opcion1">Banco Frances</option>
+              <option value="opcion2">Banco Galicia</option>
+              <option value="opcion3">Caja</option>
+            </MyField>
+
+            <MyCrearButton variant="contained" color="success">
+              + Crear
+            </MyCrearButton>
+
+          </MyRow>
+          <MyField size="small" label="Monto que ingresa" type="number"
+            inputMode="decimal" step="0.01" required />
+
+          <MyField size="small" label="Nro. Operacion Banco"/>
+
+          <MyField size="small" label="Concepto/Descripción" />
+
+          <MySubtitle variant="h5">Origen del Ingreso</MySubtitle>
+          {/* <MyField size="small" label="Categoría cuenta" style={{ marginLeft: '0px' }} /> */}
+
           <MyField
             size="small"
-            label="Cuenta"
-            style={{ marginLeft: '0px' }}
-            value={cuenta}
-            onChange={(e) => setCuenta(e.target.value)}
+            label="Categoría cuenta"
+            // style={{ marginLeft: '0px' }}
+            value={categoriaCuenta}
+            onChange={(e) => setCategoriaCuenta(e.target.value)}
             required
             select
             SelectProps={{ native: true }}
             InputLabelProps={{ shrink: true }}
           >
-            <option value="" disabled>Seleccione una cuenta</option>
-            <option value="opcion1">Banco Frances</option>
-            <option value="opcion2">Banco Galicia</option>
-            <option value="opcion3">Caja</option>
+            <option value="" disabled>Selecciona una categoria</option>
+            <option value="opcion1">Alumnos</option>
+            <option value="opcion2">Profesores</option>
+            <option value="opcion3">Ventas</option>
           </MyField>
+          <MyRow>
+            <MyField
+              size="small"
+              label="Cuenta"
+              value={cuenta}
+              onChange={(e) => setCuenta(e.target.value)}
+              required
+              select
+              SelectProps={{ native: true }}
+              InputLabelProps={{ shrink: true }}
+            >
+              <option value="" disabled>Seleccione una cuenta</option>
+              <option value="opcion1">Luis Salinas</option>
+              <option value="opcion2">Wilson</option>
+              <option value="opcion3">El Puntano S.A.</option>
+
+            </MyField>
+            <MyCrearButton variant="contained" color="success">
+              + Crear
+            </MyCrearButton>
+          </MyRow>
           {/* <MyField size="small" label="Importe" style={{ marginLeft: '0px' }} /> */}
-          <MyField size="small" label="Importe" type="number" 
-            inputMode="decimal"step="0.01"  />
-          <MyField size="small" label="Concepto/Descripción" style={{ marginLeft: '0px' }} />
-          <MySubtitle variant="h5">Origen del Ingreso</MySubtitle>
-          <MyField size="small" label="Categoría cuenta" style={{ marginLeft: '0px' }} />
-          <MyField size="small" label="Cuenta" style={{ marginLeft: '0px' }} />
-          <MyField size="small" label="Importe" style={{ marginLeft: '0px' }} />
-          <MyField size="small" label="Concepto/Descripción" style={{ marginLeft: '0px' }} />
+          <MyField size="small" label="Importe" type="number"
+            inputMode="decimal" step="0.01" />
+
+          <MyField size="small" label="Concepto/Descripción" />
           <MyButtonRow>
             <MySubmitButton variant="contained" color="success">
               Guardar
             </MySubmitButton>
-            <Button variant="contained" color="secondary">
-              <a href="./registros">Cancelar</a>
-            </Button>
+            <MyCancelButton variant="contained" >
+              <a href="/registros">Cancelar</a>
+            </MyCancelButton>
           </MyButtonRow>
 
 

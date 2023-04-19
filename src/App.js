@@ -7,7 +7,7 @@ import Registros from "./pages/registros";
 import Finanzas from "./pages/finanzas";
 import Contable from "./pages/contable";
 import Reportes from "./pages/reportes";
-import Ingresos from "./pages/ingresos";
+import Ingresos from "./forms/ingresos";
 
 
 import React from 'react';
