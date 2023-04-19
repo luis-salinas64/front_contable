@@ -9,6 +9,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
+
 const MyContainer = styled(Container)({
   // backgroundColor: '#C4E0E5',
   position: 'absolute',
@@ -108,7 +109,7 @@ const MyCrearButton = styled(Button)({
 })
 
 
-const Ingresos = () => {
+const Egresos = () => {
   const [numComprobante, setNumComprobante] = useState(1);
   const [fecha, setFecha] = useState(null);
   const [categoriaCuenta, setCategoriaCuenta] = useState('');
@@ -141,7 +142,7 @@ const Ingresos = () => {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <MyContainer>
         <Typography variant="h3" align="center" gutterBottom style={{ borderBottom: '1px solid black' }}>
-          Ingresos
+          Egresos
         </Typography>
         <MyForm>
           <MyRow>
@@ -159,7 +160,7 @@ const Ingresos = () => {
 
 
           </MyRow>
-          <MySubtitle variant="h5">Detalle del Ingreso</MySubtitle>
+          <MySubtitle variant="h5">Destino del Egreso</MySubtitle>
           
           <MyField
             size="small"
@@ -172,9 +173,9 @@ const Ingresos = () => {
             InputLabelProps={{ shrink: true }}
           >
             <option value="" disabled>Selecciona una categoria</option>
-            <option value="opcion1">Disponibilidades</option>
-            <option value="opcion2">Opción 2</option>
-            <option value="opcion3">Opción 3</option>
+            <option value="opcion1">Desarrollo</option>
+            <option value="opcion2">Comercial</option>
+            <option value="opcion3">Inversiones</option>
           </MyField>
 
           <MyRow>
@@ -189,9 +190,9 @@ const Ingresos = () => {
               InputLabelProps={{ shrink: true }}
             >
               <option value="" disabled>Seleccione una cuenta</option>
-              <option value="opcion1">Banco Frances</option>
-              <option value="opcion2">Banco Galicia</option>
-              <option value="opcion3">Caja</option>
+              <option value="opcion1">Luis Salinas</option>
+              <option value="opcion2">Sebastian</option>
+              <option value="opcion3">Facebook</option>
             </MyField>
 
             <MyCrearButton variant="contained" color="success">
@@ -202,11 +203,11 @@ const Ingresos = () => {
           <MyField size="small" label="Monto que ingresa" type="number"
             inputMode="decimal" step="0.01" required />
 
-          <MyField size="small" label="Nro. Operacion Banco"/>
+          
 
           <MyField size="small" label="Concepto/Descripción" />
 
-          <MySubtitle variant="h5">Origen del Ingreso</MySubtitle>
+          <MySubtitle variant="h5">Origen de los Fondos</MySubtitle>
           {/* <MyField size="small" label="Categoría cuenta" style={{ marginLeft: '0px' }} /> */}
 
           <MyField
@@ -221,9 +222,9 @@ const Ingresos = () => {
             InputLabelProps={{ shrink: true }}
           >
             <option value="" disabled>Selecciona una categoria</option>
-            <option value="opcion1">Alumnos</option>
-            <option value="opcion2">Profesores</option>
-            <option value="opcion3">Ventas</option>
+            <option value="opcion1">Disponibilidades</option>
+            <option value="opcion2">Opcion2</option>
+            <option value="opcion3">Opcion3</option>
           </MyField>
           <MyRow>
             <MyField
@@ -237,9 +238,9 @@ const Ingresos = () => {
               InputLabelProps={{ shrink: true }}
             >
               <option value="" disabled>Seleccione una cuenta</option>
-              <option value="opcion1">Luis Salinas</option>
-              <option value="opcion2">Wilson</option>
-              <option value="opcion3">El Puntano S.A.</option>
+              <option value="opcion1">Caja</option>
+              <option value="opcion2">Banco Frances</option>
+              <option value="opcion3">Mercado de Pago</option>
 
             </MyField>
             <MyCrearButton variant="contained" color="success">
@@ -249,7 +250,7 @@ const Ingresos = () => {
           {/* <MyField size="small" label="Importe" style={{ marginLeft: '0px' }} /> */}
           <MyField size="small" label="Importe" type="number"
             inputMode="decimal" step="0.01" />
-
+            <MyField size="small" label="Nro.Operacion Banco" />
           <MyField size="small" label="Concepto/Descripción" />
           <MyButtonRow>
             <MySubmitButton variant="contained" color="success">
@@ -267,4 +268,4 @@ const Ingresos = () => {
   );
 };
 
-export default Ingresos;
+export default Egresos;
