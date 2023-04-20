@@ -7,7 +7,8 @@ import Registros from "./pages/registros";
 import Finanzas from "./pages/finanzas";
 import Contable from "./pages/contable";
 import Reportes from "./pages/reportes";
-import Ingresos from "./pages/ingresos";
+import Ingresos from "./forms/ingresos";
+import Egresos from "./forms/egresos";
 
 
 import React from 'react';
@@ -40,6 +41,8 @@ function App() {
           <Route path="/reportes" element={<Reportes/>}></Route>
 
           <Route path="/ingresos" element={<Ingresos/>}></Route>
+
+          <Route path="/egresos" element={<Egresos/>}></Route>
 
         </Routes>
         
