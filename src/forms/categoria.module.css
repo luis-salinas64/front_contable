@@ -1,0 +1,56 @@
+.container{
+    /* background-color: '#C4E0E5' */
+    position: 'absolute';
+    /* height: '720px',*/
+    top: '101px';
+    left: '171px';
+    display: 'flex';
+    flex-direction: 'column';
+    /* justifyContent: 'center',
+    alignItems: 'center',*/
+    margin: 0,
+
+}
+
+.myform {
+    display: 'flex';
+    flex-direction: 'column';
+
+}
+
+.myrow {
+    display: 'flex';
+    flex-direction: 'row';
+    /* justifyContent: 'center',*/
+}
+
+.myfield {
+    width: "500px";
+    margin: '12px';
+    margin-left: '12px';
+    border-radius: '4px';
+}
+
+.myfield .MuiInputBase-input {
+        padding: '5px';
+        background-color: 'whitesmoke';
+}
+
+
+
+.mybuttonrow {
+    margin-top: '15px';
+    margin-bottom: '20px';
+    justify-content: 'center';
+
+};
+
+.mysubmitbutton {
+    margin-right: '16px';
+    text-decoration: 'none';
+}
+
+.mycancelbutton {
+    background: 'red';
+    text-decoration: 'none';
+}

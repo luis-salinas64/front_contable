@@ -116,25 +116,60 @@ const Ingresos = () => {
   const [importe, setImporte] = useState('0.00');
   const [conceptoDescripcion, setConceptoDescripcion] = useState('');
 
+  const guardarDatos = () => {
+    const datos = {
+      fecha: fecha.format('YYYY-MM-DD'),
+      categoria_cuenta: categoriaCuenta,
+      cuenta: cuenta,
+      importe: importe,
+      concepto_descripcion: conceptoDescripcion
+    };
+
+    console.log(datos)
+
+    fetch('http://localhost:8000/api/ingresos/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(datos)
+    })
+      .then(response => {
+        if (response.ok) {
+          console.log('Datos guardados correctamente en la base de datos',datos);
+        } else {
+          console.log('Error al guardar los datos en la base de datos',datos);
+        }
+      })
+      .catch(error => {
+        console.error('Error en la petición:', error);
+      });
+  };
+  
+
   const handleFechaChange = (date) => {
     setFecha(date);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setNumComprobante(numComprobante + 1);
+    guardarDatos();
+    ;
   };
 
   const handleImporteChange = (e) => {
-    const value = e.target.value;
-    const formattedValue = parseFloat(value);
-    const hasTwoDecimals = /^\d+(\.\d{1,2})?$/.test(value);
-    if (!hasTwoDecimals) {
-      setImporte(formattedValue.toFixed(2));
-    } else {
-      setImporte(formattedValue.toString());
+    const value = e.target.value();
+     {
+      const formattedValue = parseFloat(value);
+      const hasTwoDecimals = /^\d+(\.\d{1,2})?$/.test(value);
+      if (!hasTwoDecimals) {
+        setImporte(formattedValue.toFixed(2));
+      } else {
+        setImporte(formattedValue.toString());
+      }
     }
   };
+  
 
 
   return (
@@ -172,7 +207,7 @@ const Ingresos = () => {
             InputLabelProps={{ shrink: true }}
           >
             <option value="" disabled>Selecciona una categoria</option>
-            <option value="opcion1">Disponibilidades</option>
+            <option value="Disponibilidades">Disponibilidades</option>
             <option value="opcion2">Opción 2</option>
             <option value="opcion3">Opción 3</option>
           </MyField>
@@ -189,9 +224,9 @@ const Ingresos = () => {
               InputLabelProps={{ shrink: true }}
             >
               <option value="" disabled>Seleccione una cuenta</option>
-              <option value="opcion1">Banco Frances</option>
-              <option value="opcion2">Banco Galicia</option>
-              <option value="opcion3">Caja</option>
+              <option value="Banco Frances">Banco Frances</option>
+              <option value="Banco Galicia">Banco Galicia</option>
+              <option value="Caja">Caja</option>
             </MyField>
 
             <MyCrearButton variant="contained" color="success">
@@ -200,11 +235,11 @@ const Ingresos = () => {
 
           </MyRow>
           <MyField size="small" label="Monto que ingresa" type="number"
-            inputMode="decimal" step="0.01" required />
+            inputMode="decimal" step="0.01" required onClick={handleImporteChange}/>
 
           <MyField size="small" label="Nro. Operacion Banco"/>
 
-          <MyField size="small" label="Concepto/Descripción" />
+          <MyField size="small" label="Concepto/Descripción" onChange={(e) => setConceptoDescripcion(e.target.value)}/>
 
           <MySubtitle variant="h5">Origen del Ingreso</MySubtitle>
           {/* <MyField size="small" label="Categoría cuenta" style={{ marginLeft: '0px' }} /> */}
@@ -221,9 +256,9 @@ const Ingresos = () => {
             InputLabelProps={{ shrink: true }}
           >
             <option value="" disabled>Selecciona una categoria</option>
-            <option value="opcion1">Alumnos</option>
-            <option value="opcion2">Profesores</option>
-            <option value="opcion3">Ventas</option>
+            <option value="Alumnos">Alumnos</option>
+            <option value="Profesores">Profesores</option>
+            <option value="Ventas">Ventas</option>
           </MyField>
           <MyRow>
             <MyField
@@ -237,9 +272,9 @@ const Ingresos = () => {
               InputLabelProps={{ shrink: true }}
             >
               <option value="" disabled>Seleccione una cuenta</option>
-              <option value="opcion1">Luis Salinas</option>
-              <option value="opcion2">Wilson</option>
-              <option value="opcion3">El Puntano S.A.</option>
+              <option value="Luis Salinas">Luis Salinas</option>
+              <option value="Wilson">Wilson</option>
+              <option value="El Puntano S.A.">El Puntano S.A.</option>
 
             </MyField>
             <MyCrearButton variant="contained" color="success">
@@ -248,11 +283,11 @@ const Ingresos = () => {
           </MyRow>
           {/* <MyField size="small" label="Importe" style={{ marginLeft: '0px' }} /> */}
           <MyField size="small" label="Importe" type="number"
-            inputMode="decimal" step="0.01" />
+            inputMode="decimal" step="0.01" onClick={handleImporteChange}/>
 
-          <MyField size="small" label="Concepto/Descripción" />
+          <MyField size="small" label="Concepto/Descripción"onChange={(e) => setConceptoDescripcion(e.target.value)} />
           <MyButtonRow>
-            <MySubmitButton variant="contained" color="success">
+            <MySubmitButton variant="contained" color="success" onClick={handleSubmit}>
               Guardar
             </MySubmitButton>
             <MyCancelButton variant="contained" >
