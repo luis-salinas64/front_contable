@@ -10,6 +10,8 @@ import Reportes from "./pages/reportes";
 import Ingresos from "./forms/ingresos";
 import Egresos from "./forms/egresos";
 import Categoria from "./forms/categoria";
+import AbmCuentas from "./pages/cuentas";
+import Cuentapp from "./forms/cuenta_pp";
 
 import React from 'react';
 import './App.css';
@@ -43,6 +45,10 @@ function App() {
           <Route path="/ingresos" element={<Ingresos/>}></Route>
 
           <Route path="/egresos" element={<Egresos/>}></Route>
+
+          <Route path="/cuentas" element={<AbmCuentas/>}></Route>
+
+          <Route path="/cuenta_pp" element={<Cuentapp/>}></Route>
 
           <Route path="/categoria" element={<Categoria/>}></Route>
 

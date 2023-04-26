@@ -40,7 +40,7 @@ const Registros = () => {
             <a className={styles["button"]} href="./ajustes">
             <img src={ajustes} alt="Ajustes" ></img>Ajustes</a>
 
-            <a className={styles["button"]} href="./categoria">
+            <a className={styles["button"]} href="./cuentas">
               <img src={abm} alt="ABMCuentas"></img>A-B-M Cuentas</a>
           </div>
           </div> 

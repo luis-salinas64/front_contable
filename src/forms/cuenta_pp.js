@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import styles from './categoria.module.css';
 
 
-const Categoria = () => {
+const Cuentapp = () => {
 
   const [name, setName] = useState('');
   const [categorias, setCategorias] = useState([]);
@@ -120,8 +120,8 @@ const Categoria = () => {
   return (
 
     <Container className={styles.container}>
-      <Typography variant="h3" align="center" gutterBottom style={{ borderBottom: '1px solid black' }}>
-        Nueva Categoria
+      <Typography variant="h4" align="center" gutterBottom style={{ borderBottom: '1px solid black' }}>
+        A-B-M Cuentas Propias
       </Typography>      
 
       <form className={styles.myform}>
@@ -172,4 +172,4 @@ const Categoria = () => {
   );
 };
 
-export default Categoria;
+export default Cuentapp;

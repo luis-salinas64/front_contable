@@ -1,56 +1,100 @@
-.container{
-    /* background-color: '#C4E0E5' */
-    position: 'absolute';
-    /* height: '720px',*/
-    top: '101px';
-    left: '171px';
-    display: 'flex';
-    flex-direction: 'column';
-    /* justifyContent: 'center',
-    alignItems: 'center',*/
-    margin: 0,
+
+
+.container{    
+    position: absolute;    
+    top: 101px;
+    left: 171px;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    
 
 }
 
 .myform {
-    display: 'flex';
-    flex-direction: 'column';
+    display:flex;
+    flex-direction: column;
+    width: 70%;
+    border-radius: 5px;
 
 }
 
 .myrow {
-    display: 'flex';
-    flex-direction: 'row';
-    /* justifyContent: 'center',*/
+    display: flex;
+    flex-direction: row;
+    
 }
 
 .myfield {
-    width: "500px";
-    margin: '12px';
-    margin-left: '12px';
-    border-radius: '4px';
-}
+    width: 100%;
+    margin: 10px;
+    /* margin-left: '12px'; */    
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    
+}   
 
-.myfield .MuiInputBase-input {
-        padding: '5px';
-        background-color: 'whitesmoke';
-}
-
-
+.myfield input {
+    padding: 5px;
+    background-color: whitesmoke;
+  }
 
 .mybuttonrow {
-    margin-top: '15px';
-    margin-bottom: '20px';
-    justify-content: 'center';
+    margin-top: 15px;
+    margin-bottom: 15px;                
+    display: flex;
+    justify-content:space-between;
 
-};
+}
 
 .mysubmitbutton {
     margin-right: '16px';
-    text-decoration: 'none';
+    text-decoration: none;
+    position: absolute;
+    margin-left: 400px;
 }
 
 .mycancelbutton {
-    background: 'red';
-    text-decoration: 'none';
+    
+    text-decoration: none;
+    color: white;
+}
+
+.listado {
+    font-size: 20px;
+    display: flex;
+    width: 100%;
+    margin-top: 5px;
+    margin-left: 5px;
+    padding: 3px;
+    
+        
+}
+
+.mydeletebutton {
+    background-color: rgb(241, 58, 58);
+    border: 1px solid black;
+    margin-left: 240px;
+    color: whitesmoke;
+    font-size: 16px;
+    height: 20px;
+    width: 100px;
+    border-radius: 4px;
+    position: absolute;
+    margin-left: 50%;
+    
+}
+
+.myeditbutton {
+    background-color: rgb(87, 207, 87);
+    border: 1px solid black;
+    margin-left: 150px;
+    color: whitesmoke;
+    font-size: 16px;
+    height: 20px;
+    width: 100px;
+    border-radius: 4px;
+    position: absolute;
+    margin-left: 30%;
 }

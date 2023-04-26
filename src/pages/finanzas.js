@@ -1,7 +1,4 @@
 import styles from "../components/table/table.module.css";
-
-
-
 import ingreso from "../assets/img/monedas.png";
 import egreso from "../assets/img/pago.png";
 import ventas from "../assets/img/ventas.png";

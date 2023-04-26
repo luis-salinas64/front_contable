@@ -18,7 +18,7 @@ const Sidebar = () => {
             <li><a href="/ajustes">Ajustes</a></li>
             <li><a href="/ncredito">N Credito</a></li>
             <li><a href="/ndebito">N Debito</a></li>
-            <li><a href="/abmcuentas">A-B-M Cuentas</a></li>
+            <li><a href="/cuentas">A-B-M Cuentas</a></li>
 
           </ul>
         </li>
