@@ -3,8 +3,6 @@ import styles from "./header.module.css";
 
 import inovelogo from "../../assets/img/inove_logo.png";
 import avatar from "../../assets/img/hombre.png";
-import salir from "../../assets/img/salir.png"
-
 
       
 const Header = () => {

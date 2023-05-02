@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import styles from './categoria.module.css';
+import axiosInstance from '../api/axios';
 
 
 const Categoria = () => {
@@ -13,10 +14,10 @@ const Categoria = () => {
   const [categorias, setCategorias] = useState([]);
 
   const obtenerCategorias = () => {
-    fetch("http://localhost:8000/api/v1.0/registros/crud/categoria/")
-      .then(response => response.json())
-      .then(data => {
-        setCategorias(data);
+  
+  axiosInstance.get('categoria/')
+      .then(response => {
+        setCategorias(response.data);
       })
       .catch(error => {
         console.error("Error en la petición:", error);
@@ -35,15 +36,14 @@ const Categoria = () => {
 
     console.log(datos);
 
-    fetch("http://localhost:8000/api/v1.0/registros/crud/categoria/", {
-      method: "POST",
+    axiosInstance.post('categoria/', JSON.stringify(datos),{      
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(datos)
+      
     })
       .then(response => {
-        if (response.ok) {
+        if (response.status === 201) {
           console.log("Datos guardados correctamente en la base de datos", datos);
           setName(""); // Actualiza el estado de 'name' a una cadena vacía
           alert("La nueva categoría se ha agregado correctamente.");
@@ -57,29 +57,29 @@ const Categoria = () => {
       });
   };
 
-
-
   const handleSubmit = (event) => {
     event.preventDefault();
     guardarDatos();
     ;
   };
+
   const editarCategoria = (id, newName) => {
     const datos = {
       name: newName,
     };
-
-    fetch(`http://localhost:8000/api/v1.0/registros/crud/categoria/${id}/`, {
-      method: 'PUT',
+    
+    axiosInstance.put(`categoria/${id}/`, JSON.stringify(datos),{      
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(datos),
+      
     })
+    
       .then((response) => {
-        if (response.ok) {
-          console.log('Categoría editada correctamente en la base de datos', datos);
+        if (response.status === 200) {
+          console.log('Categoría editada correctamente en la base de datos', datos);          
           obtenerCategorias();
+          alert("La nueva categoría se ha modificado correctamente.");
         } else {
           console.log('Error al editar la categoría en la base de datos', datos);
         }
@@ -98,11 +98,14 @@ const Categoria = () => {
 
   const handleDelete = (id) => {
     if (window.confirm('¿Está seguro de que desea eliminar esta categoría?')) {
-      fetch(`http://localhost:8000/api/v1.0/registros/crud/categoria/${id}/`, {
-        method: 'DELETE',
+      axiosInstance.delete(`categoria/${id}/`,{      
+        headers: {
+          "Content-Type": "application/json"
+        },
+        
       })
         .then((response) => {
-          if (response.ok) {
+          if (response.status === 204) {
             console.log('Categoría eliminada correctamente de la base de datos');
             obtenerCategorias();
           } else {

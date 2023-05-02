@@ -1,17 +1,8 @@
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../public/fonts/Montserrat-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-}
 
 body {
-  font-family: 'Montserrat-Medium';
   overflow-x: hidden;
+  font-family:monospace;
   background-color: rgb(168, 188, 207);
   
 }
 
-/* .container {
-  width: 100%;
-} */

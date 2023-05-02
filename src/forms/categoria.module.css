@@ -6,9 +6,7 @@
     left: 171px;
     display: flex;
     flex-direction: column;
-    margin: 0;
-    
-
+    margin: 0;    
 }
 
 .myform {
@@ -16,24 +14,26 @@
     flex-direction: column;
     width: 70%;
     border-radius: 5px;
-
 }
 
 .myrow {
     display: flex;
-    flex-direction: row;
-    
+    flex-direction: row;    
 }
 
 .myfield {
     width: 100%;
-    margin: 10px;
-    /* margin-left: '12px'; */    
+    margin: 10px;   
     display: flex;
     flex-direction: column;
     margin-left: 0;
     
 }   
+.myselect {
+    background-color: antiquewhite;
+    border: 1px solid black;
+    
+}
 
 .myfield input {
     padding: 5px;
