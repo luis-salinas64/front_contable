@@ -6,6 +6,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 import styles from './categoria.module.css';
+import { styled } from '@mui/material/styles';
 import axiosInstance from '../api/axios';
 
 
@@ -36,6 +37,25 @@ const Cuentapp = () => {
   
   const categoriasOrdenadas = [...categorias].sort((a, b) => a.name.localeCompare(b.name));
 
+  const MyField = styled(TextField)({
+    width: "500px",
+    margin: '12px',
+    marginLeft: '0px',
+    borderRadius: '4px',
+  
+    '& .MuiInputBase-input': {
+      padding: '5px',
+      backgroundColor: 'whitesmoke',
+  
+    },
+  });
+
+  const MyCrearButton = styled(Button)({
+    height: '28px',
+    margin: '14px',
+    marginLeft: '50px'
+  })
+
   return (
 
     <Container className={styles.container}>
@@ -44,8 +64,8 @@ const Cuentapp = () => {
       </Typography>
 
       <form className={styles.myform}>
-
-        <TextField className={styles.myselect}
+      <div className={styles.myrow}>
+        <MyField
           size="small"
           label="Categoría Cuenta"
           select
@@ -61,7 +81,13 @@ const Cuentapp = () => {
               {categoria.name}
             </option>
           ))}
-        </TextField>
+        </MyField>
+
+        <MyCrearButton variant="contained" color="success" href='/categoria'>
+              + Crear
+        </MyCrearButton>
+
+        </div>
 
         <TextField className={styles.myfield}
           size="small"

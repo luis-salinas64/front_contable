@@ -9,16 +9,12 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
-const MyContainer = styled(Container)({
-  // backgroundColor: '#C4E0E5',
-  position: 'absolute',
-  // height: '720px',
+const MyContainer = styled(Container)({  
+  position: 'absolute',  
   top: '101px',
   left: '171px',
   display: 'flex',
-  flexDirection: 'column',
-  // justifyContent: 'center',
-  // alignItems: 'center',
+  flexDirection: 'column',  
   margin: 0,
 
 });
@@ -32,7 +28,7 @@ const MyForm = styled('form')({
 const MyRow = styled('div')({
   display: 'flex',
   flexDirection: 'row',
-  // justifyContent: 'center',
+  
 });
 
 const MyField = styled(TextField)({

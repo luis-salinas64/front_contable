@@ -14,6 +14,8 @@
     flex-direction: column;
     width: 70%;
     border-radius: 5px;
+    margin-block: 50px;
+
 }
 
 .myrow {
@@ -30,8 +32,9 @@
     
 }   
 .myselect {
-    background-color: antiquewhite;
+    background-color: rgb(250, 215, 250);
     border: 1px solid black;
+    margin-bottom: 12px;
     
 }
 
